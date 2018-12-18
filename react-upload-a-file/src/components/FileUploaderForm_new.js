@@ -1,7 +1,10 @@
 import React, { Component } from 'react';
 import axios, { post } from 'axios';
 
-
+var express = require("express"),
+    app = express(),
+    upload = require('express-fileupload');
+app.use(upload())
 
 class FileUploaderForm_new extends Component {
   constructor(props){
