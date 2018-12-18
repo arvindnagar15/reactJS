@@ -9,11 +9,11 @@ const fileUpload = require('express-fileupload'); //addition we make
 
 //const index = require('./routes/index');
 //const users = require('./routes/users');
-
+console.log("Inside this method... 1111")
 const app = express();
 app.use(cors());
 app.use(fileUpload());
-
+console.log("Inside this method... 2222")
 
 // view engine setup
 //app.set('views', path.join(__dirname, 'views'));
@@ -24,20 +24,39 @@ app.use(fileUpload());
 //app.use(logger('dev'));
 app.use(bodyParser.json());
 app.use(bodyParser.urlencoded({ extended: true }));
+console.log("Inside this method... 3333")
 //app.use(cookieParser());
 
 // Use CORS and File Upload modules here
 
 
 app.use('/public', express.static(__dirname + '/public'));
-
+console.log("Inside this method... 4444", __dirname)
 //app.use('/', index);
 
 
 // POST method route
 app.post('/upload', function (req, res) {
     console.log("Inside this method... Router")
-    res.send('POST request to the homepage')
+
+
+    let uploadFile = req.files.file
+    console.log("Inside this method... Router", uploadFile)
+    const fileName = req.files.file.name
+    console.log("Inside this method... Router222",fileName)
+    
+    uploadFile.mv("./upload/"+fileName, function(error){
+      if(error){
+        console.log("Error occurred : "+error);
+        res.send("Error occurred");
+      }else{
+        console.log("Successsfully transferred : ");
+        res.send("Successsfully transferred : ");
+      }
+    })
+
+    //res.send('POST request to the homepage')
+    //next()
   })
 
 console.log('in serve again....')

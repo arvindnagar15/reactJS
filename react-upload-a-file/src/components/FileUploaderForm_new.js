@@ -1,11 +1,9 @@
 import React, { Component } from 'react';
 import axios, { post } from 'axios';
 
-//var express = require("express");
-//var app = express();
-//var router = express.Router();
 
-class FileUploaderForm extends Component {
+
+class FileUploaderForm_new extends Component {
   constructor(props){
     super(props);
     this.state = {
@@ -16,12 +14,12 @@ class FileUploaderForm extends Component {
   handleUploadImage(ev) {
     ev.preventDefault();
     
-
-
-
     const data = new FormData();
     data.append('file', this.uploadInput.files[0]);
     console.log('filename',  this.uploadInput.files[0]);
+
+    var file = this.uploadInput.files[0]
+    
     fetch('http://localhost:4000/upload', {
     method: 'POST',
     body: data
@@ -53,4 +51,4 @@ class FileUploaderForm extends Component {
     }
     }
 
-export default FileUploaderForm;
+export default FileUploaderForm_new;
