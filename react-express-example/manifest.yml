@@ -1,0 +1,10 @@
+---
+applications:
+- name: react-express-example
+  command: node server/server.js
+  domain: cfapps.io
+  instances: 1
+
+  
+  
+  
